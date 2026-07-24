@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DC Raine | Technology Consulting, Rapid Prototyping & Products</title>
+  <meta name="description" content="DC Raine turns your business needs and ideas into smart software fast. 3-5 day rapid prototypes, practical AI, custom app building, and DC Health.">
+  <meta name="keywords" content="DC Raine, Technology Consulting, Rapid Prototyping, Custom Software, DC Health, Business AI Automation">
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="DC Raine | Practical Tech Consulting & Rapid Prototyping">
+  <meta property="og:description" content="Turn your business needs and ideas into smart software fast. 3-5 day working prototypes with zero tech jargon.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Three.js ESM via UNPKG -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Background Glow & Mesh -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar" id="main-header">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo-link" aria-label="DC Raine Home">
+        <!-- SVG Reproduction of DC Raine Logo -->
+        <svg class="brand-logo-svg" viewBox="0 0 440 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DC Raine Logo">
+          <defs>
+            <linearGradient id="dcRaineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4F26B8" />
+              <stop offset="50%" stop-color="#2D52D7" />
+              <stop offset="100%" stop-color="#00D28E" />
+            </linearGradient>
+            <linearGradient id="dcRaineTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#3B35C8" />
+              <stop offset="100%" stop-color="#00D28E" />
+            </linearGradient>
+          </defs>
+          <rect x="5" y="5" width="90" height="90" rx="18" ry="18" stroke="url(#dcRaineGrad)" stroke-width="8" fill="none" />
+          <text x="50" y="65" font-family="'Outfit', sans-serif" font-weight="800" font-size="44" fill="url(#dcRaineTextGrad)" text-anchor="middle">DC</text>
+          <text x="125" y="68" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" fill="url(#dcRaineTextGrad)" letter-spacing="2">RAINE</text>
+        </svg>
+      </a>
+
+      <!-- Navbar Menu Order: What We Do -> Sound Familiar? -> How We Move Fast -> Who We Help -> Products ▾ -> About -->
+      <nav class="nav-links" id="nav-menu">
+        <a href="#services" class="nav-item">What We Do</a>
+        <a href="#questions" class="nav-item">Sound Familiar?</a>
+        <a href="#how-we-do-it" class="nav-item">How We Move Fast</a>
+        <a href="#who-we-help" class="nav-item">Who We Help</a>
+
+        <!-- Products Hover Dropdown Menu (Positioned after Who We Help) -->
+        <div class="nav-item-dropdown">
+          <button class="nav-item dropdown-trigger" aria-expanded="false">
+            <span>Products</span>
+            <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+          </button>
+
+          <div class="dropdown-menu glass-panel-3d">
+            <div class="dropdown-header">
+              <span class="dropdown-title">DC RAINE PRODUCT SUITE</span>
+            </div>
+            
+            <div class="dropdown-list">
+              <!-- Product Item 1: DC Health -->
+              <a href="#dc-health" class="product-menu-item">
+                <div class="p-item-icon icon-mint">
+                  <i data-lucide="heart-pulse"></i>
+                </div>
+                <div class="p-item-content">
+                  <div class="p-item-title-row">
+                    <span class="p-item-title">DC Health</span>
+                    <span class="p-item-badge">Featured Flagship</span>
+                  </div>
+                  <p class="p-item-desc">Precision Longevity Intelligence fusing DNA, Bloods & Wearables.</p>
+                </div>
+              </a>
+
+              <!-- Placeholder for Future Products -->
+              <div class="product-menu-item item-upcoming">
+                <div class="p-item-icon icon-purple">
+                  <i data-lucide="sparkles"></i>
+                </div>
+                <div class="p-item-content">
+                  <div class="p-item-title-row">
+                    <span class="p-item-title">Next Product</span>
+                    <span class="p-item-badge badge-dim">In Development</span>
+                  </div>
+                  <p class="p-item-desc">Custom AI tools & enterprise automations expanding soon.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#about" class="nav-item">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline" id="theme-toggle-btn" aria-label="Toggle visual effect mode" title="Toggle Ambient Particle Mode">
+          <i data-lucide="sparkles"></i>
+          <span>Fx Mode</span>
+        </button>
+        <button class="btn btn-primary" id="open-consult-btn">
+          <span>Let's Talk Tech</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Navigation</span>
+      <button class="drawer-close" id="drawer-close"><i data-lucide="x"></i></button>
+    </div>
+
+    <div class="drawer-links">
+      <a href="#services" class="drawer-link">What We Do</a>
+      <a href="#questions" class="drawer-link">Sound Familiar?</a>
+      <a href="#how-we-do-it" class="drawer-link">How We Move Fast</a>
+      <a href="#who-we-help" class="drawer-link">Who We Help</a>
+      
+      <div class="drawer-products-section">
+        <span class="drawer-section-label">PRODUCTS SUITE</span>
+        <a href="#dc-health" class="drawer-link text-mint drawer-sublink">
+          <i data-lucide="heart-pulse"></i> DC Health (Longevity Platform)
+        </a>
+      </div>
+
+      <a href="#about" class="drawer-link">About</a>
+      <button class="btn btn-primary full-width margin-top-md" id="mobile-consult-btn">Let's Talk Tech</button>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <!-- WebGL Canvas Container -->
+      <div id="canvas-container" class="hero-canvas-wrapper">
+        <canvas id="hero-canvas"></canvas>
+      </div>
+
+      <div class="hero-overlay-content">
+        <div class="hero-badge badge-glow">
+          <span class="badge-dot"></span>
+          <span>Friendly, Plain-English Tech & AI Partner</span>
+        </div>
+
+        <h1 class="hero-title">
+          Turn Your Business Needs & Ideas <br>
+          <span class="text-gradient">Into Smart Software — Fast</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          No developer intimidation. No 6-month delays. We look at your business ambitions, test ideas with working prototypes in <strong>3 to 5 days</strong>, and build practical AI and custom applications that take away manual hassle.
+        </p>
+
+        <div class="hero-cta-group">
+          <button class="btn btn-primary btn-large btn-glow" id="hero-consult-btn">
+            <i data-lucide="message-circle"></i>
+            <span>Have a Friendly Chat</span>
+          </button>
+          <a href="#questions" class="btn btn-secondary btn-large">
+            <i data-lucide="help-circle"></i>
+            <span>Does This Sound Like You?</span>
+          </a>
+        </div>
+
+        <!-- Metrics Strip -->
+        <div class="hero-stats-strip glass-panel-3d">
+          <div class="stat-card">
+            <div class="stat-number text-gradient">3-5 Days</div>
+            <div class="stat-label">See a Working Prototype</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <div class="stat-number text-gradient">0 Jargon</div>
+            <div class="stat-label">100% Plain-English Guidance</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <div class="stat-number text-gradient">Any Size</div>
+            <div class="stat-label">From Solo Founders to SMBs</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <div class="stat-number text-gradient">100% IP</div>
+            <div class="stat-label">You Own All Code & Rights</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: QUESTION / RESONANCE SECTION -->
+    <section class="section-container" id="questions">
+      <div class="section-header text-center">
+        <div class="section-tag">Are You Asking Yourself...</div>
+        <h2 class="section-title">Sound Familiar? You're Not Alone.</h2>
+        <p class="section-description">
+          Most business owners want modern technology and AI, but don't know where to start or worry it will be too expensive or complex. Here is how we make it simple.
+        </p>
+      </div>
+
+      <div class="questions-grid">
+        <div class="question-card glass-panel-3d tilt-card">
+          <div class="question-header">
+            <div class="q-icon-box"><i data-lucide="help-circle"></i></div>
+            <span class="q-tag">The Question</span>
+          </div>
+          <h3 class="q-title">"How do I test a new software or app idea without spending hundreds of thousands upfront?"</h3>
+          <div class="q-answer-box">
+            <div class="answer-label"><i data-lucide="sparkles"></i> The DC Raine Answer</div>
+            <p>We build a <strong>rapid working prototype in 3 to 5 days</strong>. You get to touch, click, and test the real software before committing big budget.</p>
+          </div>
+        </div>
+
+        <div class="question-card glass-panel-3d tilt-card">
+          <div class="question-header">
+            <div class="q-icon-box"><i data-lucide="clock"></i></div>
+            <span class="q-tag">The Question</span>
+          </div>
+          <h3 class="q-title">"Our team spends hours every week doing manual spreadsheet & admin work."</h3>
+          <div class="q-answer-box">
+            <div class="answer-label"><i data-lucide="sparkles"></i> The DC Raine Answer</div>
+            <p>We audit your workflow and introduce <strong>smart, automated software tools</strong> that handle repetitive tasks for you — saving dozens of hours weekly.</p>
+          </div>
+        </div>
+
+        <div class="question-card glass-panel-3d tilt-card">
+          <div class="question-header">
+            <div class="q-icon-box"><i data-lucide="brain"></i></div>
+            <span class="q-tag">The Question</span>
+          </div>
+          <h3 class="q-title">"Is AI actually useful for a business like mine, or is it just hype?"</h3>
+          <div class="q-answer-box">
+            <div class="answer-label"><i data-lucide="sparkles"></i> The DC Raine Answer</div>
+            <p>We strip away the hype. We show you 2-3 <strong>practical, everyday AI tools</strong> (like automated customer response or document search) that give instant value.</p>
+          </div>
+        </div>
+
+        <div class="question-card glass-panel-3d tilt-card">
+          <div class="question-header">
+            <div class="q-icon-box"><i data-lucide="shield-alert"></i></div>
+            <span class="q-tag">The Question</span>
+          </div>
+          <h3 class="q-title">"Tech agencies speak in confusing code and charge for things I don't understand."</h3>
+          <div class="q-answer-box">
+            <div class="answer-label"><i data-lucide="sparkles"></i> The DC Raine Answer</div>
+            <p>We speak <strong>plain English</strong>. We act as your trusted technical partner, explaining options clearly and focusing purely on what makes practical business sense.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CORE SERVICES (WHAT WE DO) -->
+    <section class="section-container" id="services">
+      <div class="section-header text-center">
+        <div class="section-tag">What We Do</div>
+        <h2 class="section-title">4 Simple Ways We Help You Scale</h2>
+        <p class="section-description">
+          Whether you need strategic advice, a quick working prototype, a custom web app, or smart data tools — we keep things transparent and straightforward.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Pillar 1: Tech Consulting -->
+        <div class="service-card-3d tilt-card" data-service="consulting">
+          <div class="card-inner glass-panel-3d">
+            <div class="card-glow"></div>
+            <div class="card-header">
+              <div class="icon-wrapper icon-purple"><i data-lucide="compass"></i></div>
+              <span class="card-step-num">01</span>
+            </div>
+            <h3 class="card-title">Technology Consulting</h3>
+            <p class="card-text">We sit down with you, look at your business needs and growth ambitions, then introduce smart, practical technologies and AI tools that save time and money.</p>
+            <ul class="card-features">
+              <li><i data-lucide="check-circle-2"></i> Business & Needs Assessment</li>
+              <li><i data-lucide="check-circle-2"></i> Plain-English Tech Strategy</li>
+              <li><i data-lucide="check-circle-2"></i> Practical AI Integration Roadmap</li>
+            </ul>
+            <button class="card-action-btn" data-modal-target="consulting">
+              <span>Tell Us Your Goals</span><i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Rapid Prototyping -->
+        <div class="service-card-3d tilt-card" data-service="prototyping">
+          <div class="card-inner glass-panel-3d">
+            <div class="card-glow"></div>
+            <div class="card-header">
+              <div class="icon-wrapper icon-blue"><i data-lucide="zap"></i></div>
+              <span class="card-step-num">02</span>
+            </div>
+            <h3 class="card-title">Rapid Prototyping</h3>
+            <p class="card-text">Formulate and test your ideas fast. We build tangible, working software prototypes in days so you can test concepts live before making larger commitments.</p>
+            <ul class="card-features">
+              <li><i data-lucide="check-circle-2"></i> See Working Software in 3-5 Days</li>
+              <li><i data-lucide="check-circle-2"></i> Test Concepts with Real Users</li>
+              <li><i data-lucide="check-circle-2"></i> Zero-Risk Idea Validation</li>
+            </ul>
+            <button class="card-action-btn" data-modal-target="prototyping">
+              <span>Prototype an Idea</span><i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Build Applications & Systems -->
+        <div class="service-card-3d tilt-card" data-service="engineering">
+          <div class="card-inner glass-panel-3d">
+            <div class="card-glow"></div>
+            <div class="card-header">
+              <div class="icon-wrapper icon-teal"><i data-lucide="layers"></i></div>
+              <span class="card-step-num">03</span>
+            </div>
+            <h3 class="card-title">Build Applications & Systems</h3>
+            <p class="card-text">We build clean web platforms, mobile tools, customer portals, and internal automated systems designed to replace tedious admin work and scale with you.</p>
+            <ul class="card-features">
+              <li><i data-lucide="check-circle-2"></i> Custom Web & Mobile Apps</li>
+              <li><i data-lucide="check-circle-2"></i> Automated Business Tools</li>
+              <li><i data-lucide="check-circle-2"></i> Reliable, Scalable Architecture</li>
+            </ul>
+            <button class="card-action-btn" data-modal-target="engineering">
+              <span>Build a System</span><i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pillar 4: Data & AI -->
+        <div class="service-card-3d tilt-card" data-service="ai">
+          <div class="card-inner glass-panel-3d">
+            <div class="card-glow"></div>
+            <div class="card-header">
+              <div class="icon-wrapper icon-mint"><i data-lucide="sparkles"></i></div>
+              <span class="card-step-num">04</span>
+            </div>
+            <h3 class="card-title">Data & AI Solutions</h3>
+            <p class="card-text">Turn your existing business data into simple, actionable insights. We build custom AI assistants that answer questions, organize documents, and automate tasks.</p>
+            <ul class="card-features">
+              <li><i data-lucide="check-circle-2"></i> Friendly AI Document & Chat Tools</li>
+              <li><i data-lucide="check-circle-2"></i> Business Data Dashboards</li>
+              <li><i data-lucide="check-circle-2"></i> Time-Saving Workflow Automation</li>
+            </ul>
+            <button class="card-action-btn" data-modal-target="ai">
+              <span>Explore AI Solutions</span><i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: HOW WE MOVE FAST -->
+    <section class="section-container" id="how-we-do-it">
+      <div class="section-header text-center">
+        <div class="section-tag">High Velocity, Zero Stress</div>
+        <h2 class="section-title">How We Move Fast</h2>
+        <p class="section-description">
+          We don't do endless strategy decks. We believe in having a quick conversation, showing you a working prototype, and getting useful software into your hands fast.
+        </p>
+      </div>
+
+      <div class="fast-timeline-grid">
+        <div class="fast-card glass-panel-3d tilt-card">
+          <div class="fast-step-badge">Step 1</div>
+          <div class="fast-icon icon-purple"><i data-lucide="message-square"></i></div>
+          <h3>1. Need & Ambition Audit</h3>
+          <span class="fast-time">Day 1 - 2</span>
+          <p>A relaxed chat to understand your business goals, current bottlenecks, and where smart technology or AI can save you time.</p>
+        </div>
+
+        <div class="fast-card glass-panel-3d tilt-card">
+          <div class="fast-step-badge">Step 2</div>
+          <div class="fast-icon icon-blue"><i data-lucide="zap"></i></div>
+          <h3>2. Express Prototype</h3>
+          <span class="fast-time">Day 3 - 5</span>
+          <p>We build a working visual prototype of your idea so you can click, test, and experience it live before committing big budgets.</p>
+        </div>
+
+        <div class="fast-card glass-panel-3d tilt-card">
+          <div class="fast-step-badge">Step 3</div>
+          <div class="fast-icon icon-teal"><i data-lucide="code-2"></i></div>
+          <h3>3. Production Build</h3>
+          <span class="fast-time">2 - 6 Months</span>
+          <p>Once you love the prototype, we build the full software application or automation system with speed and precision.</p>
+        </div>
+
+        <div class="fast-card glass-panel-3d tilt-card">
+          <div class="fast-step-badge">Step 4</div>
+          <div class="fast-icon icon-mint"><i data-lucide="sparkles"></i></div>
+          <h3>4. Launch & Smart Support</h3>
+          <span class="fast-time">Ongoing</span>
+          <p>We deploy your system smoothly and plug in AI automation tools so your business runs easier every single day.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: WHO WE HELP -->
+    <section class="section-container" id="who-we-help">
+      <div class="section-header text-center">
+        <div class="section-tag">Accessible Partner</div>
+        <h2 class="section-title">Built for Businesses of All Sizes</h2>
+        <p class="section-description">
+          You don't need a huge tech budget or a developer background. We make technology and AI approachable, affordable, and practical for everyone.
+        </p>
+      </div>
+
+      <div class="who-grid">
+        <div class="who-card glass-panel-3d tilt-card">
+          <div class="who-icon"><i data-lucide="rocket"></i></div>
+          <h3>Startups & Idea Founders</h3>
+          <p>Have an exciting new app or business idea? We build rapid prototypes in days so you can test your vision without burning through savings.</p>
+          <div class="who-tag">Fast & Affordable MVP</div>
+        </div>
+
+        <div class="who-card glass-panel-3d tilt-card">
+          <div class="who-icon"><i data-lucide="store"></i></div>
+          <h3>Small & Medium Businesses</h3>
+          <p>Tired of manual spreadsheets and repetitive tasks? We introduce simple AI tools and custom software that save hours every single week.</p>
+          <div class="who-tag">Practical Automation</div>
+        </div>
+
+        <div class="who-card glass-panel-3d tilt-card">
+          <div class="who-icon"><i data-lucide="trending-up"></i></div>
+          <h3>Established Companies</h3>
+          <p>Looking to streamline older systems? We modernise software workflows and build custom application platforms built for smooth growth.</p>
+          <div class="who-tag">Scalable Systems</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: PROPRIETARY PRODUCTS — DC HEALTH SHOWCASE (Positioned AFTER Who We Help) -->
+    <section class="section-container product-showcase-section" id="dc-health">
+      <div class="product-banner glass-panel-3d">
+        <div class="product-header-badge">
+          <i data-lucide="shield-check" class="text-mint"></i>
+          <span>Flagship Software & Health Product Ecosystem</span>
+        </div>
+
+        <div class="product-main-grid">
+          <div class="product-info">
+            <h2 class="product-title">
+              <span class="product-logo-sub">DC HEALTH</span>
+              Integrated & Holistic Health Services & Products
+            </h2>
+
+            <p class="product-lead">
+              A prime demonstration of DC Raine's engineering and product capabilities. <strong>DC Health</strong> fuses biological diagnostics, clinical bloodwork, real-time wearable telemetry, and targeted nutrition into one seamless, holistic longevity platform.
+            </p>
+
+            <!-- 6 Integrated Holistic Pillars -->
+            <div class="data-layers-grid">
+              <div class="data-layer-card">
+                <div class="layer-icon icon-purple"><i data-lucide="dna"></i></div>
+                <div class="layer-content">
+                  <h4>1. DNA & Epigenetic Blueprint</h4>
+                  <p>Analyzes inherited genetic markers, metabolic speed, and biological age acceleration.</p>
+                </div>
+              </div>
+
+              <div class="data-layer-card">
+                <div class="layer-icon icon-blue"><i data-lucide="droplet"></i></div>
+                <div class="layer-content">
+                  <h4>2. Clinical Blood Diagnostics</h4>
+                  <p>Tracks comprehensive blood panels, lipid ratios, hormonal balance, and inflammation indicators.</p>
+                </div>
+              </div>
+
+              <div class="data-layer-card">
+                <div class="layer-icon icon-teal"><i data-lucide="activity"></i></div>
+                <div class="layer-content">
+                  <h4>3. Continuous Wearable Telemetry</h4>
+                  <p>Streams continuous HRV, sleep architecture, recovery scores, and strain metrics live.</p>
+                </div>
+              </div>
+
+              <div class="data-layer-card">
+                <div class="layer-icon icon-mint"><i data-lucide="pill"></i></div>
+                <div class="layer-content">
+                  <h4>4. Precision Nutrition & Supplements</h4>
+                  <p>Formulates custom micronutrient protocols and targeted supplementation routines based on real data.</p>
+                </div>
+              </div>
+
+              <div class="data-layer-card">
+                <div class="layer-icon icon-purple"><i data-lucide="flame"></i></div>
+                <div class="layer-content">
+                  <h4>5. Holistic Bio-Hacking Protocols</h4>
+                  <p>Custom thermotherapy, cold exposure, circadian rhythm alignment, and recovery guidance.</p>
+                </div>
+              </div>
+
+              <div class="data-layer-card">
+                <div class="layer-icon icon-mint"><i data-lucide="cpu"></i></div>
+                <div class="layer-content">
+                  <h4>6. Adaptive AI Intelligence</h4>
+                  <p>Fuses all health streams into an evolving, daily personalized longevity regimen.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-actions">
+              <button class="btn btn-primary btn-large btn-glow" data-modal-target="health-app">
+                <i data-lucide="heart-pulse"></i>
+                <span>Explore DC Health Platform</span>
+              </button>
+              <a href="#services" class="btn btn-secondary btn-large">
+                <i data-lucide="code"></i>
+                <span>Build a Custom Product With Us</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Visual Card -->
+          <div class="product-preview-card glass-panel-3d tilt-card">
+            <div class="preview-card-inner">
+              <div class="preview-header">
+                <div class="status-indicator">
+                  <span class="pulse-dot"></span>
+                  <span>HOLISTIC HEALTH SYSTEM ACTIVE</span>
+                </div>
+                <span class="preview-tag">DC HEALTH ENGINE</span>
+              </div>
+
+              <div class="protocol-score-box">
+                <div class="score-circle">
+                  <span class="score-val text-gradient">98</span>
+                  <span class="score-label">Health Score</span>
+                </div>
+                <div class="score-details">
+                  <span class="detail-tag text-mint">Optimal Biomarker & Protocol Sync</span>
+                  <span class="detail-sub">DNA + Bloods + Wearables + Nutrition Fused</span>
+                </div>
+              </div>
+
+              <div class="preview-telemetry-list">
+                <div class="telemetry-item">
+                  <span class="t-name"><i data-lucide="heart"></i> HRV & Recovery Telemetry</span>
+                  <span class="t-status text-mint">Optimal (84 ms)</span>
+                </div>
+                <div class="telemetry-item">
+                  <span class="t-name"><i data-lucide="droplet"></i> Blood Biomarkers & ApoB</span>
+                  <span class="t-status text-blue">Target Zone</span>
+                </div>
+                <div class="telemetry-item">
+                  <span class="t-name"><i data-lucide="dna"></i> Biological Age Index</span>
+                  <span class="t-status text-mint">-3.4 Yrs Younger</span>
+                </div>
+                <div class="telemetry-item">
+                  <span class="t-name"><i data-lucide="pill"></i> Targeted Supplement Stack</span>
+                  <span class="t-status text-mint">Formulated & Active</span>
+                </div>
+              </div>
+
+              <div class="preview-footer-note">
+                <i data-lucide="sparkles"></i> 100% Integrated Holistic Longevity Intelligence
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: FAQ ACCORDION (Addressing Objections & Building Trust) -->
+    <section class="section-container" id="faq">
+      <div class="section-header text-center">
+        <div class="section-tag">Got Questions?</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-description">
+          Everything you need to know about working with DC Raine — transparent, clear, and simple.
+        </p>
+      </div>
+
+      <div class="faq-accordion-list max-width-md">
+        <details class="faq-item glass-panel-3d" open>
+          <summary class="faq-question">
+            <span>How much does a 3–5 day rapid prototype cost?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Our rapid prototyping is structured as a fixed, low-risk project fee designed for any budget. You get a tangible, working visual software model in days so you can test your idea live before spending larger sums on full production development.</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-panel-3d">
+          <summary class="faq-question">
+            <span>What if I don't have a technical background?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>That is exactly why DC Raine exists! We speak 100% plain English. We explain all technical decisions clearly without developer jargon, acting as your trusted technology partner from start to finish.</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-panel-3d">
+          <summary class="faq-question">
+            <span>Who owns the intellectual property (IP) and source code?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>You do. 100% of the software code, assets, prototypes, and system architectures built for your business belong entirely to you.</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-panel-3d">
+          <summary class="faq-question">
+            <span>How is DC Raine different from traditional software agencies?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Traditional agencies sell 200-page slide decks and 6-month timelines. We skip the corporate fluff and move straight to rapid working software prototypes, lean execution, and practical AI tools that deliver real ROI immediately.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- SECTION 7: ABOUT SECTION -->
+    <section class="section-container about-section" id="about">
+      <div class="about-grid glass-panel-3d">
+        <div class="about-content">
+          <div class="section-tag">About DC Raine</div>
+          <h2 class="section-title">A Straightforward, Friendly Tech Partner</h2>
+          <p class="about-text">
+            At DC Raine, we believe technology should empower your business, not confuse you. We cut out corporate jargon and long sales pitches. Our goal is to look at your business, understand where you want to go, and deploy smart technology and AI that makes immediate sense.
+          </p>
+          <p class="about-text">
+            Whether you want a quick 3-day prototype to test a new idea, custom software to automate manual admin, or proprietary products like <strong>DC Health</strong>, we make the journey easy, clear, and fast.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>Friendly, plain-English guidance with zero tech jargon</span>
+            </div>
+            <div class="highlight-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>Rapid prototypes so you see real working software upfront</span>
+            </div>
+            <div class="highlight-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>Growing suite of proprietary software products</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-visual">
+          <div class="visual-card-3d">
+            <div class="logo-large-wrapper">
+              <svg viewBox="0 0 440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="5" width="90" height="90" rx="18" ry="18" stroke="url(#dcRaineGrad2)" stroke-width="8" fill="none" />
+                <text x="50" y="65" font-family="'Outfit', sans-serif" font-weight="800" font-size="44" fill="url(#dcRaineTextGrad2)" text-anchor="middle">DC</text>
+                <text x="125" y="68" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" fill="url(#dcRaineTextGrad2)" letter-spacing="2">RAINE</text>
+                <defs>
+                  <linearGradient id="dcRaineGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4F26B8" />
+                    <stop offset="100%" stop-color="#00D28E" />
+                  </linearGradient>
+                  <linearGradient id="dcRaineTextGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#4F26B8" />
+                    <stop offset="100%" stop-color="#00D28E" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="visual-tagline">Smart Technology. Rapid Execution. For Everyone.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: CALL TO ACTION BANNER -->
+    <section class="section-container cta-section">
+      <div class="cta-banner glass-panel-3d text-center">
+        <div class="cta-glow"></div>
+        <h2 class="cta-title">Have an Idea or Goal? Let's Talk.</h2>
+        <p class="cta-desc">Reach out for a casual, friendly chat. No pressure, no tech jargon — just clear answers on how technology and AI can help your business.</p>
+        <button class="btn btn-primary btn-large btn-glow" id="banner-consult-btn">
+          <i data-lucide="message-circle"></i>
+          <span>Schedule a Free Discussion</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <svg class="brand-logo-svg" viewBox="0 0 440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="90" height="90" rx="18" ry="18" stroke="url(#dcRaineGrad3)" stroke-width="8" fill="none" />
+          <text x="50" y="65" font-family="'Outfit', sans-serif" font-weight="800" font-size="44" fill="url(#dcRaineTextGrad3)" text-anchor="middle">DC</text>
+          <text x="125" y="68" font-family="'Outfit', sans-serif" font-weight="800" font-size="52" fill="url(#dcRaineTextGrad3)" letter-spacing="2">RAINE</text>
+          <defs>
+            <linearGradient id="dcRaineGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4F26B8" />
+              <stop offset="100%" stop-color="#00D28E" />
+            </linearGradient>
+            <linearGradient id="dcRaineTextGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4F26B8" />
+              <stop offset="100%" stop-color="#00D28E" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <p class="footer-tagline">Technology Consulting, Rapid Prototyping, Application Building & Proprietary Products.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">Technology Consulting</a>
+          <a href="#services">Rapid Prototyping</a>
+          <a href="#services">Application Building</a>
+          <a href="#services">Data & AI Solutions</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Products Suite</h4>
+          <a href="#dc-health" class="text-mint">DC Health (Longevity)</a>
+          <a href="#how-we-do-it">How We Move Fast</a>
+          <a href="#faq">FAQ</a>
+          <a href="#about">About DC Raine</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get Started</h4>
+          <a href="#hero" id="footer-contact-link">Book a Chat</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 DC Raine. All rights reserved.</p>
+      <button class="back-to-top" id="back-to-top" aria-label="Back to Top">
+        <i data-lucide="arrow-up"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- CONSULTATION MODAL -->
+  <dialog id="consult-modal" class="modal-container glass-panel-3d">
+    <div class="modal-header">
+      <h3 class="modal-title"><i data-lucide="sparkles" class="text-mint"></i> Let's Talk Technology & AI</h3>
+      <button class="modal-close" id="modal-close-btn" aria-label="Close Modal"><i data-lucide="x"></i></button>
+    </div>
+    
+    <div class="modal-body">
+      <form id="consult-form" class="consult-form">
+        <div class="form-group">
+          <label for="client-name">Your Name</label>
+          <input type="text" id="client-name" required placeholder="e.g. Sarah Jenkins">
+        </div>
+
+        <div class="form-group">
+          <label for="client-email">Email Address</label>
+          <input type="email" id="client-email" required placeholder="sarah@company.com">
+        </div>
+
+        <div class="form-group">
+          <label for="client-service">What are you looking to achieve?</label>
+          <select id="client-service" required class="select-input">
+            <option value="all">Not sure yet — Want friendly guidance</option>
+            <option value="health-app">DC Health Platform Inquiry</option>
+            <option value="consulting">Technology Consulting & Need Assessment</option>
+            <option value="prototyping">Rapid Prototyping (Test an idea fast)</option>
+            <option value="engineering">Build an Application or System</option>
+            <option value="ai">Data Insights & Practical AI Tools</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="client-notes">Briefly tell us about your business or project idea</label>
+          <textarea id="client-notes" rows="3" placeholder="We want to learn more about DC Health / build a custom product..."></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-glow">
+            <span>Send Message</span>
+            <i data-lucide="send"></i>
+          </button>
+        </div>
+      </form>
+
+      <div class="form-success-state" id="form-success" style="display: none;">
+        <div class="success-icon"><i data-lucide="check-circle-2"></i></div>
+        <h4>Message Received!</h4>
+        <p>Thank you! A member of our team will get back to you promptly for an easy, friendly conversation.</p>
+        <button class="btn btn-primary margin-top-md" id="success-close-btn">Done</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- JavaScript Module -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

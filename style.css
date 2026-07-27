@@ -1553,15 +1553,41 @@ body {
   margin-top: 12px;
 }
 
-.form-success-state {
-  text-align: center;
-  padding: 30px 10px;
+.direct-email-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(0, 210, 142, 0.08);
+  border: 1px solid rgba(0, 210, 142, 0.25);
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  font-size: 0.85rem;
 }
 
-.success-icon {
-  font-size: 3.5rem;
-  color: var(--teal-mint);
-  margin-bottom: 16px;
+.direct-email-banner a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer-email-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  color: var(--teal-mint) !important;
+  font-weight: 600;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* RESPONSIVE BREAKPOINTS */

@@ -316,48 +316,26 @@ function initNavigationAndModal() {
   if (cancelBtn) cancelBtn.addEventListener('click', () => modal.close());
   if (successCloseBtn) successCloseBtn.addEventListener('click', () => modal.close());
 
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  // Check if page loaded after form submit redirect
+  if (window.location.search.includes('submitted=true')) {
+    if (modal && form && successState) {
+      form.style.display = 'none';
+      successState.style.display = 'block';
+      modal.showModal();
+      // Clean up URL parameter
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }
 
+  if (form) {
+    form.addEventListener('submit', (e) => {
       const submitBtn = document.getElementById('form-submit-btn');
-      const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = `<span>Sending...</span><i data-lucide="loader" class="animate-spin"></i>`;
         if (window.lucide) window.lucide.createIcons();
       }
-
-      const formData = new FormData(form);
-      
-      try {
-        const response = await fetch('https://formsubmit.co/ajax/duane@dcraine.com', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        });
-
-        if (response.ok) {
-          form.style.display = 'none';
-          successState.style.display = 'block';
-          form.reset();
-        } else {
-          // Fallback submit if AJAX fails
-          form.submit();
-        }
-      } catch (err) {
-        console.error('Form submission error:', err);
-        // Fallback standard submit
-        form.submit();
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
-          if (window.lucide) window.lucide.createIcons();
-        }
-      }
+      // Allow native form POST to FormSubmit
     });
   }
 
